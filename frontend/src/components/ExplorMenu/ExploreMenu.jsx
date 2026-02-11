@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/frontend_assets/assets";
 const ExploreMenu = () => {
+  const [category, setCategory] = useState("All");
+  console.log(category);
   return (
     <div className="explore-menu" id="explore-menu">
       <h1>Explore our menu</h1>
@@ -13,13 +15,26 @@ const ExploreMenu = () => {
       <div className="explore-menu-list">
         {menu_list.map((menu, index) => {
           return (
-            <div key={index} className="explore-menu-list-item">
-              <img src={menu.menu_image} alt="" />
+            <div
+              onClick={() =>
+                setCategory((prev) =>
+                  prev === menu.menu_name ? "All" : menu.menu_name,
+                )
+              }
+              key={index}
+              className={`explore-menu-list-item`}
+            >
+              <img
+                src={menu.menu_image}
+                alt=""
+                className={` ${category === menu.menu_name ? "active" : ""}`}
+              />
               <p>{menu.menu_name}</p>
             </div>
           );
         })}
       </div>
+
       <hr />
     </div>
   );
