@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./ExploreMenu.css";
 import { menu_list } from "../../assets/frontend_assets/assets";
-const ExploreMenu = () => {
-  const [category, setCategory] = useState("All");
-  console.log(category);
+const ExploreMenu = ({ category, setCategory }) => {
   return (
     <div className="explore-menu" id="explore-menu">
       <h1>Explore our menu</h1>
