@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from "../../Context/StoreContext";
 const Navbar = ({ setLoginPopUp }) => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState("home");
+  const { getTotalAmount, cartItems } = useContext(StoreContext);
   return (
     <div className="navbar">
       <Link to="/">
@@ -47,7 +49,7 @@ const Navbar = ({ setLoginPopUp }) => {
             src={assets.basket_icon}
             alt=""
           />
-          <div className="dot"></div>
+          <div className={getTotalAmount() === 0 ? "" : "dot"}></div>
         </div>
         <button onClick={() => setLoginPopUp(true)}>Sign In</button>
       </div>
