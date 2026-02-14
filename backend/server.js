@@ -15,8 +15,9 @@ app.get("/", (req, res) => {
   res.send("API Working");
 });
 
+//API End Points
 app.use("/api/food", foodRouter);
-
+app.use("/image", express.static("uploads"));
 app.listen(port, () => {
   console.log(`Server Started on http://localhost:${port}`);
 });
