@@ -1,5 +1,9 @@
 import foodModel from "../models/FoodModel.js";
 import fs from "fs";
+
+// @desc add food
+// @route POST api/food/add
+// @access private/Admin
 export const addFood = async (req, res) => {
   if (!req.file) {
     return res
@@ -33,6 +37,10 @@ export const addFood = async (req, res) => {
   }
 };
 
+// @desc get food list
+// @route get api/food/list
+// @access public
+
 export const getFoodList = async (req, res) => {
   try {
     const foods = await foodModel.find({});
@@ -48,6 +56,10 @@ export const getFoodList = async (req, res) => {
     });
   }
 };
+
+// @desc delete single food
+// @route get api/food/remove
+// @access private admin
 
 export const removeFood = async (req, res) => {
   try {
