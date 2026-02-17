@@ -5,24 +5,25 @@ import fs from "fs";
 // @route POST api/food/add
 // @access private/Admin
 export const addFood = async (req, res) => {
-  if (!req.file) {
-    return res
-      .status(400)
-      .json({ success: false, message: "No image uploaded" });
-  }
-
-  const { name, price, description, category } = req.body;
-  const image_filename = req.file.filename;
-
-  let food = new foodModel({
-    name: name,
-    price: price,
-    description: description,
-    category: category,
-    image: image_filename,
-  });
-
   try {
+    console.log(req.body);
+    if (!req.file) {
+      return res
+        .status(400)
+        .json({ success: false, message: "No image uploaded" });
+    }
+
+    const { name, price, description, category } = req.body;
+    const image_filename = req.file.filename;
+
+    let food = new foodModel({
+      name: name,
+      price: price,
+      description: description,
+      category: category,
+      image: image_filename,
+    });
+
     await food.save();
     res.status(200).json({
       success: true,

@@ -1,0 +1,8 @@
+.add {
+  padding: 20px 30px;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
