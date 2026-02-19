@@ -3,37 +3,46 @@ import "./LoginPopUp.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import axios from "axios";
 import { toast } from "react-toastify";
-//  http://localhost:4000
+import { useContext } from "react";
+import { StoreContext } from "../../Context/StoreContext";
 const LoginPopUp = ({ setLoginPopUp }) => {
+  const { url, token, setToken } = useContext(StoreContext);
   const [currentState, setCurrentState] = useState("Sign Up");
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    let endpoint;
     try {
-      let formData = { name, email, password };
+      if (currentState == "Sign Up") {
+        endpoint = ` ${url}/api/user/register`;
+      } else {
+        endpoint = ` ${url}/api/user/login`;
+      }
 
-      let response = await axios.post(
-        " http://localhost:4000/auth/user/register",
-        formData,
-        {},
-      );
+      let response = await axios.post(endpoint, data, {});
       if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
         toast.success(response.data.message);
-        setName("");
-        setEmail("");
-        setPassword("");
+        setLoginPopUp(false);
+        console.log(token);
       } else {
         toast.error(response.data.message);
-        setName("");
-        setEmail("");
-        setPassword("");
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error("Something wrong");
+      console.log(error.message);
     }
   };
   return (
@@ -51,25 +60,25 @@ const LoginPopUp = ({ setLoginPopUp }) => {
           {currentState === "Sign Up" && (
             <input
               type="text"
-              value={name}
+              value={data.name}
               placeholder="your name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => onChangeHandler(e)}
               name="name"
             />
           )}
           <input
             type="email"
             name="email"
-            value={email}
+            value={data.email}
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => onChangeHandler(e)}
           />{" "}
           <input
             type="password"
             placeholder="Password"
-            value={password}
+            value={data.password}
             name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => onChangeHandler(e)}
           />{" "}
         </div>
         <button type="submit" className="login-popup-button">

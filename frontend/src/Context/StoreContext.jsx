@@ -3,10 +3,8 @@ import { food_list } from "../assets/frontend_assets/assets";
 export const StoreContext = createContext(null);
 const StoreContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
-
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
+  const [token, setToken] = useState("");
+  const url = "http://localhost:4000";
   const addToCart = (itemId) => {
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -29,6 +27,11 @@ const StoreContextProvider = ({ children }) => {
     }
     return totalAmount;
   };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
   let contextValue = {
     food_list,
     setCartItems,
@@ -36,6 +39,9 @@ const StoreContextProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     getTotalAmount,
+    url,
+    setToken,
+    token,
   };
 
   return (
