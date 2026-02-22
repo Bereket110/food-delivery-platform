@@ -19,7 +19,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/place-order" element={<PlaceOrder />} />
+          <Route
+            path="/place-order"
+            element={<PlaceOrder setLoginPopUp={setLoginPopUp} />}
+          />
         </Routes>
       </div>
       <Footer />

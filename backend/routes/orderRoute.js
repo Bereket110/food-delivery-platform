@@ -1,7 +1,7 @@
 import express from "express";
-import { foodOrder } from "../controller/orderController.js";
-const orderRoute = express.Router();
+import { authMiddleware } from "../middleware/auth.js";
+import { placeOrder } from "../controller/orderController.js";
+const orderRouter = express.Router();
 
-orderRoute.post("/", foodOrder);
-
-export default orderRoute;
+orderRouter.post("/place", authMiddleware, placeOrder);
+export default orderRouter;

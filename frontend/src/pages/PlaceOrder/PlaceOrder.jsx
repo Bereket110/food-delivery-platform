@@ -1,58 +1,46 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../Context/StoreContext";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-const PlaceOrder = () => {
+import { useNavigate } from "react-router-dom";
+const PlaceOrder = ({ setLoginPopUp }) => {
   const { getTotalAmount } = useContext(StoreContext);
+  const navigate = useNavigate();
   let totalFee = getTotalAmount();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [phone, setPhone] = useState("");
-  const [zipCode, setZipCode] = useState("");
-
+  const [data, setData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    street: "",
+    city: "",
+    state: "",
+    country: "",
+    phone: "",
+    zipCode: "",
+  });
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      let data = {
-        totalFee,
-        firstName,
-        lastName,
-        email,
-        street,
-        city,
-        state,
-        country,
-        phone,
-        zipCode,
-      };
-      const response = await axios.post(
-        "http://localhost:4000/api/order",
-        data,
-        {},
-      );
+      const response = await axios.put("http://localhost:4000/api/order", data);
       if (response.data.success) {
-        setCity("");
-        setCountry("");
-        setEmail("");
-        setFirstName("");
-        setLastName("");
-        setPhone("");
-        setState("");
-        setStreet("");
-        setZipCode("");
         toast.success(response.data.message);
+        navigate("/");
       } else {
         toast.error(response.data.message);
+        navigate("/");
+        setLoginPopUp(true);
       }
     } catch (error) {
+      // toast.error("Something wrong");
       toast.error(error.message);
+      console.log(error.message);
     }
   };
   return (
@@ -62,61 +50,70 @@ const PlaceOrder = () => {
         <div className="multi-fields">
           <input
             type="text"
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
+            onChange={onChangeHandler}
+            value={data.firstName}
+            name="firstName"
             placeholder="First name"
           />
           <input
             type="text"
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
+            onChange={onChangeHandler}
+            value={data.lastName}
+            name="lastName"
             placeholder="Last name"
           />
         </div>
         <input
           type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={onChangeHandler}
+          value={data.email}
+          name="email"
           placeholder="Email address"
         />
         <input
           type="text"
-          onChange={(e) => setStreet(e.target.value)}
-          value={street}
+          onChange={onChangeHandler}
+          value={data.street}
+          name="street"
           placeholder="Street"
         />
         <div className="multi-fields">
           <input
             type="text"
-            onChange={(e) => setCity(e.target.value)}
-            value={city}
+            onChange={onChangeHandler}
+            value={data.city}
+            name="city"
             placeholder="City"
           />
           <input
             type="text"
-            onChange={(e) => setState(e.target.value)}
-            value={state}
+            onChange={onChangeHandler}
+            value={data.state}
+            name="state"
             placeholder="State"
           />
         </div>
         <div className="multi-fields">
           <input
             type="text"
-            onChange={(e) => setZipCode(e.target.value)}
-            value={zipCode}
+            onChange={onChangeHandler}
+            value={data.zipCode}
+            name="zipCode"
             placeholder="Zip code"
           />
           <input
             type="text"
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
+            onChange={onChangeHandler}
+            value={data.country}
+            name="country"
             placeholder="Country"
           />
         </div>
         <input
           type="text"
-          onChange={(e) => setPhone(e.target.value)}
-          value={phone}
+          onChange={onChangeHandler}
+          value={data.phone}
+          name="phone"
           placeholder="Phone number"
         />
       </div>

@@ -1,47 +1,30 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-  firstName: {
+  userId: {
     type: String,
     required: true,
   },
-  lastName: {
-    type: String,
+  items: {
+    type: Array,
     required: true,
   },
-  email: {
-    type: String,
+  amount: {
+    type: Number,
     required: true,
   },
-  street: {
-    type: String,
+  address: {
+    type: Object,
     required: true,
   },
-  city: {
+  status: {
     type: String,
-    required: true,
+    default: "Food Processing",
   },
-  state: {
-    type: String,
-    required: true,
-  },
-  zipCode: {
-    type: String,
-    required: true,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  phone: {
-    type: String,
-    required: true,
-  },
-  totalFee: {
-    type: String,
-    required: true,
-  },
+  date: { type: Date, default: Date.now() },
+  payment: { type: Boolean, default: false },
 });
 
-const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);
-export default Order;
+const orderModel =
+  mongoose.models.order || mongoose.model("order", orderSchema);
+export default orderModel;

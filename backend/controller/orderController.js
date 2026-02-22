@@ -1,49 +1,33 @@
-import Order from "../models/OrderModel.js";
-export const foodOrder = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    street,
-    city,
-    state,
-    zipCode,
-    country,
-    phone,
-    totalFee,
-  } = req.body;
+import orderModel from "../models/OrderModel";
+import UserModel from "../models/userModel";
+import Stripe from "stripe";
 
-  const order = new Order({
-    firstName,
-    lastName,
-    email,
-    street,
-    city,
-    state,
-    zipCode,
-    country,
-    phone,
-    totalFee,
-  });
-  await order.save();
-  res.status(200).json({
-    success: true,
-    message: "Ordered Successfully",
-  });
+const strip = new Stripe(process.env.STRIPE_SECRETE_KEY);
+
+//Placing user order from frontend
+export const placeOrder = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const newOrder = new orderModel({
+      userId: req.userId,
+      items: req.body.items,
+      amount: req.body.amount,
+      address: req.body.address,
+    });
+
+    await newOrder.save();
+
+    await UserModel.findByIdAndUpdate(userId, { cartData: {} });
+
+    res.json({
+      success: true,
+      message: "Accepted and Updated",
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      success: false,
+      message: "Something wrong",
+    });
+  }
 };
-/*
-
-{
-   "firstName":"Bereket",
-    "lastName":"Yakob",
-    "email":"bereket@gmail.com",
-    "street":"Sawla",
-    "city":"Gofa",
-    "state":"Bola",
-    "zipCode":"1000",
-    "country":"Ethiopia",
-    "phone":"099283475",
-    "totalFee":"76"
-}
-  
-*/
