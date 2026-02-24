@@ -8,6 +8,8 @@ import Footer from "./components/Footer/Footer";
 import LoginPopUp from "./components/LoginPopup/LoginPopUp";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Verify from "./pages/Verify/Verify";
+import MyOrder from "./pages/MyOrder/MyOrder";
 const App = () => {
   const [loginPopUp, setLoginPopUp] = useState(false);
   return (
@@ -22,6 +24,14 @@ const App = () => {
           <Route
             path="/place-order"
             element={<PlaceOrder setLoginPopUp={setLoginPopUp} />}
+          />
+          <Route
+            path="/verify"
+            element={<Verify setLoginPopUp={setLoginPopUp} />}
+          />
+          <Route
+            path="/myorder"
+            element={<MyOrder setLoginPopUp={setLoginPopUp} />}
           />
         </Routes>
       </div>

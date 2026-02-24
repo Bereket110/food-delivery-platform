@@ -6,9 +6,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 const PlaceOrder = ({ setLoginPopUp }) => {
-  const { getTotalAmount } = useContext(StoreContext);
+  const { getTotalAmount, food_list, cartItems, token } =
+    useContext(StoreContext);
+
   const navigate = useNavigate();
   let totalFee = getTotalAmount();
+
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -19,28 +22,50 @@ const PlaceOrder = ({ setLoginPopUp }) => {
     country: "",
     phone: "",
     zipCode: "",
+    items: cartItems,
   });
+
   const onChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setData((prev) => ({ ...prev, [name]: value }));
   };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("http://localhost:4000/api/order", data);
+      const orderItems = [];
+
+      for (let item in cartItems) {
+        const itemInfo = food_list.find(
+          (singleItem) => singleItem._id === item,
+        );
+        itemInfo["quantity"] = cartItems[item];
+        orderItems.push(itemInfo);
+      }
+      const orderData = {
+        address: data,
+        items: orderItems,
+        amount: getTotalAmount() + 2,
+      };
+      const response = await axios.post(
+        "http://localhost:4000/api/order/place",
+        orderData,
+        {
+          headers: {
+            token,
+          },
+        },
+      );
       if (response.data.success) {
-        toast.success(response.data.message);
-        navigate("/");
+        const { session_url } = response.data;
+        window.location.replace(session_url);
       } else {
-        toast.error(response.data.message);
-        navigate("/");
-        setLoginPopUp(true);
+        alert("Error");
       }
     } catch (error) {
-      // toast.error("Something wrong");
-      toast.error(error.message);
       console.log(error.message);
+      toast.error("Something wrong");
     }
   };
   return (
