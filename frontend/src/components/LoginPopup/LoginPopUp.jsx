@@ -64,6 +64,7 @@ const LoginPopUp = ({ setLoginPopUp }) => {
               placeholder="your name"
               onChange={(e) => onChangeHandler(e)}
               name="name"
+              required
             />
           )}
           <input
@@ -72,6 +73,7 @@ const LoginPopUp = ({ setLoginPopUp }) => {
             value={data.email}
             placeholder="Email"
             onChange={(e) => onChangeHandler(e)}
+            required
           />{" "}
           <input
             type="password"
@@ -79,6 +81,7 @@ const LoginPopUp = ({ setLoginPopUp }) => {
             value={data.password}
             name="password"
             onChange={(e) => onChangeHandler(e)}
+            required
           />{" "}
         </div>
         <button type="submit" className="login-popup-button">

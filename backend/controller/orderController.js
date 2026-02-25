@@ -98,7 +98,6 @@ export const userOrder = async (req, res) => {
     const userOrder = await orderModel.find({
       userId: req.userId,
     });
-    console.log(userOrder);
     res.json({
       success: true,
       data: userOrder,

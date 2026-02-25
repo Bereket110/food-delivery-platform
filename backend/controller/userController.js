@@ -76,6 +76,12 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      return res.json({
+        success: false,
+        message: "Please insert your email and password",
+      });
+    }
     const user = await UserModel.findOne({ email });
 
     if (!user) {
@@ -106,43 +112,6 @@ export const login = async (req, res) => {
     res.json({
       success: false,
       message: "Something wrong",
-    });
-  }
-};
-
-export const protect = async (req, res) => {
-  try {
-    const token = req.headers.authorization;
-    // console.log(token);
-    const decode = await jwt.decode(token, process.env.JWT_SECRETE);
-    if (!decode) {
-      return res.json({
-        success: false,
-        message: "Access denaide",
-      });
-    }
-
-    const userId = decode.userId;
-    if (!userId) {
-      return res.json({
-        success: false,
-        message: "Access denaide",
-      });
-    }
-    const userInfo = await UserModel.findById(userId);
-
-    if (!userInfo) {
-      return res.json({
-        success: false,
-        message: "Access denaide",
-      });
-    }
-    res.json({ userInfo });
-  } catch (error) {
-    console.log(error);
-    res.json({
-      success: false,
-      message: "Something error",
     });
   }
 };

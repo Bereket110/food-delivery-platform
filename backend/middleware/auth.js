@@ -4,7 +4,7 @@ export const authMiddleware = async (req, res, next) => {
   if (!token) {
     return res.json({
       success: false,
-      message: "Please login first/Token not avalibale",
+      message: "Please login/register",
     });
   }
   try {

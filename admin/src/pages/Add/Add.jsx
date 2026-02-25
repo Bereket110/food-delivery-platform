@@ -87,7 +87,7 @@ const Add = ({ url }) => {
             />
           </div>
           <div className="add-product-description flex-col">
-            <p>Description</p>
+            <p>Product Description</p>
             <textarea
               name="description"
               rows="6"
@@ -99,7 +99,7 @@ const Add = ({ url }) => {
           </div>
           <div className="add-category-price">
             <div className="add-category flex-col">
-              <p>Category</p>
+              <p>Product Category</p>
 
               <select
                 name="category"
@@ -128,7 +128,7 @@ const Add = ({ url }) => {
             </div>
           </div>
           <button type="submit" className="add-btn">
-            Submit
+            Add
           </button>
         </form>
       </div>

@@ -79,6 +79,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.firstName}
             name="firstName"
             placeholder="First name"
+            required
           />
           <input
             type="text"
@@ -86,6 +87,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.lastName}
             name="lastName"
             placeholder="Last name"
+            required
           />
         </div>
         <input
@@ -94,6 +96,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
           value={data.email}
           name="email"
           placeholder="Email address"
+          required
         />
         <input
           type="text"
@@ -101,6 +104,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
           value={data.street}
           name="street"
           placeholder="Street"
+          required
         />
         <div className="multi-fields">
           <input
@@ -109,6 +113,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.city}
             name="city"
             placeholder="City"
+            required
           />
           <input
             type="text"
@@ -116,6 +121,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.state}
             name="state"
             placeholder="State"
+            required
           />
         </div>
         <div className="multi-fields">
@@ -125,6 +131,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.zipCode}
             name="zipCode"
             placeholder="Zip code"
+            required
           />
           <input
             type="text"
@@ -132,6 +139,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             value={data.country}
             name="country"
             placeholder="Country"
+            required
           />
         </div>
         <input
@@ -140,6 +148,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
           value={data.phone}
           name="phone"
           placeholder="Phone number"
+          required
         />
       </div>
       <div className="place-order-right">
