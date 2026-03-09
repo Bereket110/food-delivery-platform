@@ -6,7 +6,10 @@
   margin-top: 50px;
   padding: 20px 40px;
   border-radius: 10px;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+}
+.how_title {
+  margin-bottom: 20px;
 }
 .how_it_works_step {
   display: flex;

@@ -2,7 +2,7 @@
   height: 34vw;
   margin: 30px auto;
   background: url("/header_img.png") no-repeat;
-  background: url("/Untitled_design.png") no-repeat;
+  /* background: url("/10001.jpeg") no-repeat; */
   background-size: contain;
   position: relative;
 }

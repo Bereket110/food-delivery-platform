@@ -3,6 +3,7 @@ import { food_list, service_list } from "../../assets/frontend_assets/assets";
 import "./Servicess.css";
 import MediaCard from "./ServiceCard";
 import HowWorks from "./HowWorks";
+import CallToAction from "./CallToAction";
 
 const Servicess = () => {
   return (
@@ -20,6 +21,7 @@ const Servicess = () => {
           ))}
         </section>
         <HowWorks />
+        <CallToAction />
       </section>
     </>
   );
