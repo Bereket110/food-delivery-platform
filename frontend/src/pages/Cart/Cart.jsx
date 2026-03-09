@@ -23,7 +23,7 @@ const Cart = () => {
           if (cartItems[item._id] > 0) {
             return (
               <>
-                <div className="cart-items-title cart-items-item">
+                <div className="cart-items-title cart-items-item" key={index}>
                   <img src={url + "/image/" + item.image} alt="" />
                   <p>{item.name}</p>
                   <p>{item.price}Birr</p>

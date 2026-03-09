@@ -42,7 +42,9 @@
   height: 2px;
   margin: 20px 0;
 }
-
+.maaheLogo {
+  color: tomato;
+}
 @media (max-width: 750px) {
   .footer-content {
     display: flex;

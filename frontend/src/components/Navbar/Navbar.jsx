@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { assets } from "../../assets/frontend_assets/assets";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
-
+import maaheLogo from "/favicon.svg";
 const Navbar = ({ setLoginPopUp }) => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState("home");
@@ -19,7 +19,7 @@ const Navbar = ({ setLoginPopUp }) => {
   return (
     <div className="navbar">
       <Link to="/">
-        <img src={assets.logo} alt="" className="logo" />
+        <img src={maaheLogo} alt="" className="logo" />
       </Link>
       <ul className="navbar-menu">
         <Link
@@ -37,10 +37,10 @@ const Navbar = ({ setLoginPopUp }) => {
           Menu
         </a>
         <li
-          onClick={() => setMenu("mobile-app")}
-          className={menu == "mobile-app" ? "active" : ""}
+          onClick={() => setMenu("About Us")}
+          className={menu == "About Us" ? "active" : ""}
         >
-          Mobile app
+          About Us
         </li>
         <a
           href="#footer"

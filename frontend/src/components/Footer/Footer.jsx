@@ -1,12 +1,15 @@
 import React from "react";
 import "./Footer.css";
+import maaheLogo from "/favicon.svg";
 import { assets } from "../../assets/frontend_assets/assets";
 const Footer = () => {
   return (
     <div className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
+          {/* <img src={assets.logo} alt="" /> */}
+          <h1 className="maaheLogo">MaaHe Delivery</h1>
+          {/* <img className="maaheLogo" src={maaheLogo} alt="" /> */}
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
             inventore corporis rem quidem id itaque quod rerum maiores sint,
@@ -30,8 +33,18 @@ const Footer = () => {
         </div>
         <div className="footer-content-right">
           <h2>CONTACT US</h2>
-          <p>Phone: +251 912345678</p>
-          <p>Email: info@maahedelivery.com</p>
+          <p>Phone: +251 949658591</p>
+          <p>Phone: +251 937618191</p>
+          <p>
+            <a href="https://t.me/mahe3649" target="_blank">
+              Telegram: mahe3649
+            </a>
+          </p>
+          <p>
+            <a href="https://tiktok.com/@delivery464" target="_blank">
+              TikTok: @delivery464
+            </a>
+          </p>
         </div>
       </div>
       <hr />

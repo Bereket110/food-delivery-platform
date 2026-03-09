@@ -66,6 +66,7 @@ const List = ({ url }) => {
                 >
                   X
                 </p>
+                <p className="edit-btn">Edit</p>
               </div>
             );
           })}

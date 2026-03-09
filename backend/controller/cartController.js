@@ -79,7 +79,6 @@ export const addToCard = async (req, res) => {
       message: "Product added to cart",
     });
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",
@@ -90,7 +89,6 @@ export const addToCard = async (req, res) => {
 export const removeFromCard = async (req, res) => {
   try {
     const userData = await UserModel.findById({ _id: req.userId });
-    console.log(userData);
     const cartData = userData.cartData;
 
     if (cartData[req.body.itemId] > 0) {
@@ -103,7 +101,6 @@ export const removeFromCard = async (req, res) => {
       message: "Removed from cart",
     });
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",
@@ -120,7 +117,6 @@ export const getCardAll = async (req, res) => {
       cartData,
     });
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",

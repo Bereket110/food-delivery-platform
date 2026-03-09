@@ -6,7 +6,6 @@ import fs from "fs";
 // @access private/Admin
 export const addFood = async (req, res) => {
   try {
-    console.log(req.body);
     if (!req.file) {
       return res
         .status(400)
@@ -30,7 +29,6 @@ export const addFood = async (req, res) => {
       message: "Food added Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
       message: "Error",
@@ -50,7 +48,6 @@ export const getFoodList = async (req, res) => {
       data: foods,
     });
   } catch (error) {
-    console.log(error);
     res.json({
       success: false,
       message: "Error",
@@ -75,7 +72,6 @@ export const removeFood = async (req, res) => {
       message: "Food Removed",
     });
   } catch (error) {
-    console.log(error);
     res.json({
       success: false,
       message: "Error",

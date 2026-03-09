@@ -58,7 +58,6 @@ export const placeOrder = async (req, res) => {
       message: "Data displayed",
     });
   } catch (error) {
-    console.log(error.message);
     res.status(500).json({
       success: false,
       message: "Something wrong",
@@ -85,7 +84,6 @@ export const verifyOrder = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",
@@ -103,7 +101,6 @@ export const userOrder = async (req, res) => {
       data: userOrder,
     });
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",
@@ -120,7 +117,6 @@ export const OrderList = async (req, res) => {
       orders,
     });
   } catch (error) {
-    console.log(error);
     res.json({
       success: false,
       message: "Something wrong",
@@ -142,7 +138,6 @@ export const updateOrderStatus = async (req, res) => {
       message: "Status update ",
     });
   } catch (error) {
-    console.log(error.message);
     res.json({
       success: false,
       message: "Something wrong",
