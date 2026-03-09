@@ -19,3 +19,31 @@
   max-width: 600px;
   margin: 0 auto;
 }
+
+/* Media card wrapper grid and responsive handling */
+.mediaCard_container {
+  display: grid;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  /* each card will be at least 280px and expand to fill space */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Fallback explicit breakpoints if necessary */
+@media (max-width: 600px) {
+  .mediaCard_container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .mediaCard_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 901px) {
+  .mediaCard_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

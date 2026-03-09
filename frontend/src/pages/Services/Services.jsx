@@ -15,7 +15,7 @@ const Servicess = () => {
             We offer a wide range of services to meet all your needs.
           </p>
         </section>
-        <section style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        <section className="mediaCard_container">
           {service_list.map((item) => (
             <MediaCard key={item._id} data={item} />
           ))}

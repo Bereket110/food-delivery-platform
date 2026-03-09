@@ -51,26 +51,7 @@ const Navbar = ({ setLoginPopUp }) => {
         >
           Services
         </Link>
-        <Link
-          to="/how-it-works"
-          onClick={() => {
-            setMenu("how-it-works");
-            navigate("/how-it-works");
-          }}
-          className={menu == "how-it-works" ? "active" : ""}
-        >
-          How It Works
-        </Link>
-        <Link
-          to="/testimonials"
-          onClick={() => {
-            setMenu("testimonials");
-            navigate("/testimonials");
-          }}
-          className={menu == "testimonials" ? "active" : ""}
-        >
-          Testimonials
-        </Link>
+
         <li
           onClick={() => navigateToAbout()}
           className={menu == "about-us" ? "active" : ""}

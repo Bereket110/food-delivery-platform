@@ -51,7 +51,6 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-      <div className="call-btn">Call</div>
     </>
   );
 };
