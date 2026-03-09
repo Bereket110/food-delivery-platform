@@ -14,6 +14,7 @@ const FoodItem = ({ food }) => {
       <div className="food-item">
         <div className="food-item-img-container">
           <img src={`${url}/image/${image}`} alt="" className="food-item-img" />
+
           {!cartItems[_id] ? (
             <img
               // onClick={() => setItemCount((prev) => prev + 1)}

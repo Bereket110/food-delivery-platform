@@ -107,14 +107,14 @@ const Add = ({ url }) => {
                 value={data.category}
               >
                 <option value="">Category</option>
-                <option value="Salad">Salad</option>
-                <option value="Rolls">Rolls</option>
-                <option value="Deserts">Deserts</option>
-                <option value="Sandwich">Sandwich</option>
-                <option value="Cake">Cake</option>
-                <option value="Pure Veg">Pure Veg</option>
-                <option value="Pasta">Pasta</option>
-                <option value="Noodles">Noodles</option>
+                <option value="ቁርስ">ቁርስ</option>
+                <option value="ምሳ">ምሳ</option>
+                <option value="የፍስክ">የፍስክ</option>
+                <option value="ጁስ መጠጦች">ጁስ መጠጦች</option>
+                <option value="ለስላሳ መጠጦች">ለስላሳ መጠጦች</option>
+                <option value="ትኩስ መጠጦች">ትኩስ መጠጦች</option>
+                <option value="ፓስታ">ፓስታ</option>
+                <option value="ኑድልስ">ኑድልስ</option>
               </select>
             </div>
             <div className="add-price flex-col">

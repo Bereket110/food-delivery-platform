@@ -5,7 +5,9 @@
   padding: 4px 8%;
 }
 .navbar-content .logo {
-  width: max(10%, 80px);
+  /* width: max(10%, 80px);
+   */
+  height: 60px;
 }
 
 .navbar-content .profile {

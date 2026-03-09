@@ -3,13 +3,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  height: 80px;
+  height: 60px;
   position: sticky;
   top: 0;
   /* background-color: #b8c5d6; */
   /* background-color: tomato; */
 
   /* box-shadow: 0px 0px 10px #00000015; */
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 10px;
   z-index: 1;
 }
 /* ul li,
@@ -18,7 +21,8 @@ ul a {
   color: tomato;
 } */
 .navbar .logo {
-  width: 150px;
+  width: 100px;
+
   cursor: pointer;
 }
 .navbar-menu {

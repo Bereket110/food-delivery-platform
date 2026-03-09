@@ -24,10 +24,19 @@ button {
   cursor: pointer;
 }
 .app {
+  position: relative;
   width: 80%;
   margin: auto;
 }
-
+.call-btn {
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(32, 11, 153);
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

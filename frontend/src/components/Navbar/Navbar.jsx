@@ -16,6 +16,18 @@ const Navbar = ({ setLoginPopUp }) => {
     navigate("/");
   };
 
+  const navigateToMenu = () => {
+    setMenu("menu");
+    navigate("/");
+  };
+  const navigateToContact = () => {
+    setMenu("contact-us");
+    navigate("/contact-us");
+  };
+  const navigateToAbout = () => {
+    setMenu("about-us");
+    navigate("/about-us");
+  };
   return (
     <div className="navbar">
       <Link to="/">
@@ -29,25 +41,48 @@ const Navbar = ({ setLoginPopUp }) => {
         >
           Home
         </Link>
-        <a
-          href="#explore-menu"
-          onClick={() => setMenu("menu")}
-          className={menu == "menu" ? "active" : ""}
+        <Link
+          to="/services"
+          onClick={() => {
+            setMenu("services");
+            navigate("/services");
+          }}
+          className={menu == "services" ? "active" : ""}
         >
-          Menu
-        </a>
+          Services
+        </Link>
+        <Link
+          to="/how-it-works"
+          onClick={() => {
+            setMenu("how-it-works");
+            navigate("/how-it-works");
+          }}
+          className={menu == "how-it-works" ? "active" : ""}
+        >
+          How It Works
+        </Link>
+        <Link
+          to="/testimonials"
+          onClick={() => {
+            setMenu("testimonials");
+            navigate("/testimonials");
+          }}
+          className={menu == "testimonials" ? "active" : ""}
+        >
+          Testimonials
+        </Link>
         <li
-          onClick={() => setMenu("About Us")}
-          className={menu == "About Us" ? "active" : ""}
+          onClick={() => navigateToAbout()}
+          className={menu == "about-us" ? "active" : ""}
         >
-          About Us
+          About
         </li>
         <a
           href="#footer"
-          onClick={() => setMenu("contact-us")}
+          onClick={() => navigateToContact()}
           className={menu == "contact-us" ? "active" : ""}
         >
-          Contact Us
+          Contact
         </a>
       </ul>
       <div className="navbar-right">
@@ -60,7 +95,6 @@ const Navbar = ({ setLoginPopUp }) => {
           />
           <div className={getTotalAmount() === 0 ? "" : "dot"}></div>
         </div>
-
         {!token ? (
           <button onClick={() => setLoginPopUp(true)}>Sign In</button>
         ) : (

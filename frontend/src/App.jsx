@@ -10,6 +10,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Verify from "./pages/Verify/Verify";
 import MyOrder from "./pages/MyOrder/MyOrder";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Services from "./pages/Services/Services";
 const App = () => {
   const [loginPopUp, setLoginPopUp] = useState(false);
   return (
@@ -33,9 +36,22 @@ const App = () => {
             path="/myorder"
             element={<MyOrder setLoginPopUp={setLoginPopUp} />}
           />
+          <Route
+            path="/about-us"
+            element={<About setLoginPopUp={setLoginPopUp} />}
+          />
+          <Route
+            path="/services"
+            element={<Services setLoginPopUp={setLoginPopUp} />}
+          />
+          <Route
+            path="/contact-us"
+            element={<Contact setLoginPopUp={setLoginPopUp} />}
+          />
         </Routes>
       </div>
       <Footer />
+      <div className="call-btn">Call</div>
     </>
   );
 };

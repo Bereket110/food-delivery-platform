@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./FoodDisplay.css";
 import { StoreContext } from "../../Context/StoreContext";
 import FoodItem from "../FoodItem/FoodItem";
-
 import axios from "axios";
 const FoodDisplay = ({ category }) => {
   const { url, food_list } = useContext(StoreContext);
