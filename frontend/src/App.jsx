@@ -48,6 +48,10 @@ const App = () => {
             path="/contact-us"
             element={<Contact setLoginPopUp={setLoginPopUp} />}
           />
+          <Route
+            path="/login"
+            element={<LoginPopUp setLoginPopUp={setLoginPopUp} />}
+          />
         </Routes>
       </div>
       <Footer />

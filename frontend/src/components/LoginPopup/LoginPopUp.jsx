@@ -5,7 +5,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { StoreContext } from "../../Context/StoreContext";
+import { useNavigate } from "react-router-dom";
 const LoginPopUp = ({ setLoginPopUp }) => {
+  const navigate = useNavigate();
   const { url, token, setToken } = useContext(StoreContext);
   const [currentState, setCurrentState] = useState("Sign Up");
 
@@ -50,11 +52,12 @@ const LoginPopUp = ({ setLoginPopUp }) => {
       <form className="login-popup-container" onSubmit={onSubmitHandler}>
         <div className="login-popup-title">
           <h2>{currentState === "Sign Up" ? "Sign Up" : "Login"}</h2>
-          <img
+          {/* <img
             onClick={() => setLoginPopUp(false)}
             src={assets.cross_icon}
             alt=""
-          />
+          /> */}
+          <img onClick={() => navigate("/")} src={assets.cross_icon} alt="" />
         </div>
         <div className="login-popup-inputs">
           {currentState === "Sign Up" && (

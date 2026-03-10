@@ -31,7 +31,14 @@ const Navbar = ({ setLoginPopUp }) => {
   };
   return (
     <div className="navbar">
-      <Link to="/">
+      <Link
+        to="/"
+        onClick={() => {
+          setMenu("home");
+          setMobileOpen(false);
+        }}
+        // className={menu == "home" ? "active" : ""}
+      >
         <img src={maaheLogo} alt="" className="logo" />
       </Link>
 
@@ -105,7 +112,8 @@ const Navbar = ({ setLoginPopUp }) => {
           <div className={getTotalAmount() === 0 ? "" : "dot"}></div>
         </div>
         {!token ? (
-          <button onClick={() => setLoginPopUp(true)}>Sign In</button>
+          // <button onClick={() => setLoginPopUp(true)}>Sign In</button>
+          <button onClick={() => navigate("/login")}>Sign In</button>
         ) : (
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
