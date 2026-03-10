@@ -90,22 +90,23 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             required
           />
         </div>
-        <input
+        {/* <input
           type="email"
           onChange={onChangeHandler}
           value={data.email}
           name="email"
           placeholder="Email address"
           required
-        />
+        /> */}
         <input
           type="text"
           onChange={onChangeHandler}
-          value={data.street}
-          name="street"
-          placeholder="Street"
+          value={data.phone}
+          name="phone"
+          placeholder="Phone number"
           required
         />
+
         <div className="multi-fields">
           <input
             type="text"
@@ -124,7 +125,7 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             required
           />
         </div>
-        <div className="multi-fields">
+        {/* <div className="multi-fields">
           <input
             type="text"
             onChange={onChangeHandler}
@@ -141,13 +142,13 @@ const PlaceOrder = ({ setLoginPopUp }) => {
             placeholder="Country"
             required
           />
-        </div>
+        </div> */}
         <input
           type="text"
           onChange={onChangeHandler}
-          value={data.phone}
-          name="phone"
-          placeholder="Phone number"
+          value={data.street}
+          name="street"
+          placeholder="Street"
           required
         />
       </div>

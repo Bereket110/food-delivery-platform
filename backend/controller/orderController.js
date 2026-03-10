@@ -93,9 +93,11 @@ export const verifyOrder = async (req, res) => {
 
 export const userOrder = async (req, res) => {
   try {
-    const userOrder = await orderModel.find({
-      userId: req.userId,
-    });
+    const userOrder = await orderModel
+      .find({
+        userId: req.userId,
+      })
+      .sort({ date: -1 });
     res.json({
       success: true,
       data: userOrder,
@@ -111,7 +113,8 @@ export const userOrder = async (req, res) => {
 //List all Order for admin
 export const OrderList = async (req, res) => {
   try {
-    const orders = await orderModel.find({});
+    // sort by date descending so the latest orders appear first
+    const orders = await orderModel.find({}).sort({ date: -1 });
     res.json({
       success: true,
       orders,
