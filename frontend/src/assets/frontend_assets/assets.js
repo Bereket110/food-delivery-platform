@@ -55,6 +55,10 @@ import person_1 from "./person_1.jpg";
 import person_2 from "./person_2.jpg";
 import person_3 from "./person_3.jpg";
 
+import home_icon from "./home_icon.png";
+import call_icon from "./call_icon.png";
+import email_icon from "./email_icon.jpg";
+
 import add_icon_white from "./add_icon_white.png";
 import add_icon_green from "./add_icon_green.png";
 import remove_icon_red from "./remove_icon_red.png";
@@ -103,6 +107,9 @@ export const assets = {
   person_1,
   person_2,
   person_3,
+  home_icon,
+  call_icon,
+  email_icon,
 };
 
 export const menu_list = [
