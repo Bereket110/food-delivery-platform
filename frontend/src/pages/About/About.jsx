@@ -1,5 +1,4 @@
 import React from "react";
-import "./About.css";
 import Section_1 from "../../components/AboutPageComponents/Section_1/Section_1";
 import Section_2 from "../../components/AboutPageComponents/Section_2/Section_2";
 import Section_3 from "../../components/AboutPageComponents/Section_3/Section_3";

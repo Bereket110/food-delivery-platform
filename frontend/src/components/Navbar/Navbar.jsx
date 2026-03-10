@@ -7,6 +7,7 @@ import maaheLogo from "/favicon.svg";
 const Navbar = ({ setLoginPopUp }) => {
   const navigate = useNavigate();
   const [menu, setMenu] = useState("home");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { getTotalAmount, cartItems, setToken, token } =
     useContext(StoreContext);
 
@@ -33,38 +34,65 @@ const Navbar = ({ setLoginPopUp }) => {
       <Link to="/">
         <img src={maaheLogo} alt="" className="logo" />
       </Link>
-      <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
-          className={menu == "home" ? "active" : ""}
-        >
-          Home
-        </Link>
-        <Link
-          to="/services"
-          onClick={() => {
-            setMenu("services");
-            navigate("/services");
-          }}
-          className={menu == "services" ? "active" : ""}
-        >
-          Services
-        </Link>
 
+      {/* hamburger toggle for mobile */}
+      <div
+        className="navbar-toggle"
+        onClick={() => setMobileOpen((open) => !open)}
+        aria-label="Menu"
+      >
+        <span className={mobileOpen ? "bar open" : "bar"} />
+        <span className={mobileOpen ? "bar open" : "bar"} />
+        <span className={mobileOpen ? "bar open" : "bar"} />
+      </div>
+
+      <ul className={`navbar-menu ${mobileOpen ? "open" : ""}`}>
+        <li>
+          <Link
+            to="/"
+            onClick={() => {
+              setMenu("home");
+              setMobileOpen(false);
+            }}
+            className={menu == "home" ? "active" : ""}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/services"
+            onClick={() => {
+              setMenu("services");
+              navigate("/services");
+              setMobileOpen(false);
+            }}
+            className={menu == "services" ? "active" : ""}
+          >
+            Services
+          </Link>
+        </li>
         <li
-          onClick={() => navigateToAbout()}
+          onClick={() => {
+            navigateToAbout();
+            setMobileOpen(false);
+          }}
           className={menu == "about-us" ? "active" : ""}
         >
           About
         </li>
-        <a
-          href="#footer"
-          onClick={() => navigateToContact()}
-          className={menu == "contact-us" ? "active" : ""}
-        >
-          Contact
-        </a>
+        <li>
+          <a
+            href="#footer"
+            onClick={() => {
+              navigateToContact();
+              setMobileOpen(false);
+            }}
+            className={menu == "contact-us" ? "active" : ""}
+          >
+            Contact
+          </a>
+        </li>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
