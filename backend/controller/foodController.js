@@ -1,5 +1,7 @@
 import foodModel from "../models/FoodModel.js";
 import fs from "fs";
+import orderModel from "../models/OrderModel.js";
+import UserModel from "../models/userModel.js";
 
 // @desc add food
 // @route POST api/food/add
@@ -70,6 +72,34 @@ export const removeFood = async (req, res) => {
     res.json({
       success: true,
       message: "Food Removed",
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: "Error",
+    });
+  }
+};
+
+// @desc get admin information
+// @route get api/food/admin-info
+// @access private/Admin
+export const getAdminInfo = async (req, res) => {
+  try {
+    const foodCount = await foodModel.countDocuments();
+    const orderCount = await orderModel.countDocuments();
+    const totalUsers = await UserModel.countDocuments();
+    // const totalEarnings = await orderModel.aggregate([
+    //   {
+    //     $group: {
+    //       _id: null,
+    //       total: { $sum: "$totalAmount" },
+    //     },
+    //   },
+    // ]);
+    res.json({
+      success: true,
+      data: { foodCount, orderCount, totalUsers },
     });
   } catch (error) {
     res.json({

@@ -13,7 +13,9 @@ const Header = () => {
           salad, we've got you covered. Place your order now and satisfy your
           hunger with just a few clicks!
         </p>
-        <button>View Menu</button>
+        <a href="#explore-menu">
+          <button>View Menu</button>
+        </a>
       </div>
     </div>
   );

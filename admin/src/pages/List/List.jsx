@@ -4,16 +4,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 const List = ({ url }) => {
   const [list, setList] = useState([]);
-  console.log(url);
   const fetchData = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
       if (response.data.success) {
         setList(response.data.data);
-        console.log(response.data.data);
+      } else {
+        toast.error(response.data.message);
       }
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
     }
   };
   const handleFoodRemoval = async (id) => {

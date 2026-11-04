@@ -3,6 +3,7 @@ import {
   addFood,
   removeFood,
   getFoodList,
+  getAdminInfo,
 } from "../controller/foodController.js";
 import multer from "multer";
 const foodRouter = express.Router();
@@ -18,4 +19,8 @@ const upload = multer({ storage: storage });
 foodRouter.post("/add", upload.single("image"), addFood);
 foodRouter.get("/list", getFoodList);
 foodRouter.post("/remove", removeFood);
+
+//Route to admin to get total information about the performance of the system
+foodRouter.get("/admin-info", getAdminInfo);
+
 export default foodRouter;
